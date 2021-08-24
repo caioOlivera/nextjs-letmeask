@@ -8,12 +8,29 @@ import illustrationSVG from "../../assets/images/illustration.svg";
 import logoSVG from "../../assets/images/logo.svg";
 import styles from "../../assets/styles/pages/NewRoom.module.scss";
 import { Button } from "../../components/Button";
+import { FormEvent, useState } from "react";
 
 import "../../services/firebase";
 import { useAuth } from "../../hooks/useAuth";
+import { database } from "../../services/firebase";
 
 const NewRoom: NextPage = () => {
   const { user } = useAuth();
+  const [newRoom, setNewRoom] = useState("");
+
+  async function handleCreateRoom(event: FormEvent) {
+    event.preventDefault();
+    if (newRoom.trim() === "") {
+      return;
+    }
+
+    const roomRef = database.ref("rooms"); // using real time database
+    const firebaseRoom = await roomRef.push({
+      title: newRoom,
+      authorID: user?.id,
+    });
+    Router.push(`/rooms/${firebaseRoom.key}`);
+  }
 
   return (
     <div className={styles.pageAuth}>
@@ -29,8 +46,13 @@ const NewRoom: NextPage = () => {
         <div>
           <Image src={logoSVG} alt="Logo" />
           <h2>Criar uma nova sala</h2>
-          <form>
-            <input type="text" placeholder="Nome da sala" />
+          <form onSubmit={handleCreateRoom}>
+            <input
+              type="text"
+              placeholder="Nome da sala"
+              onChange={(event) => setNewRoom(event.target.value)}
+              value={newRoom}
+            />
             <Button type="submit">Criar sala</Button>
           </form>
           <p>
