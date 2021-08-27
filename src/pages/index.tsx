@@ -36,6 +36,11 @@ const Home: NextPage = () => {
       alert("Room does not exists");
       return;
     }
+
+    if (roomRef.val().endedAt) {
+      alert("Room already closed");
+      return;
+    }
     Router.push(`rooms/${roomCode}`);
   }
 
