@@ -71,7 +71,7 @@ export default function Room() {
           <div className="formFooter">
             {user ? (
               <div className={styles.userInfo}>
-                <img
+                <Image
                   src={user?.avatar}
                   alt={user.name}
                   width="32"

@@ -5,18 +5,17 @@
   padding: 1.5rem;
   border: 1px solid transparent;
 
-  &.answered {
-    background: #fefefe;
-    opacity: 0.4;
-  }
-
   &.highlighted {
-    background: var(--box-background);
-    border: 1px solid var(--purple);
+    background: #f4f0ff;
+    border: 1px solid #835afd;
 
     .userInfo > span {
-      color: var(--black);
+      color: #29292e 100%;
     }
+  }
+
+  &.answered {
+    background: #dbdcdd;
   }
 
   & + .question {
@@ -63,7 +62,7 @@
       &.likeButton {
         display: flex;
         align-items: flex-end;
-        color: var(--gray-dark);
+        color: #737380;
         gap: 0.5rem;
         transition: filter 0.2s;
 
@@ -86,7 +85,7 @@
         }
 
         &:hover svg path {
-          stroke: var(--red);
+          stroke: #cc0000;
         }
       }
 
@@ -110,86 +109,12 @@
 
         &:hover svg path,
         &:hover circle {
-          stroke: var(--blue);
+          stroke: blue 80%;
         }
 
         &.active svg path {
-          stroke: var(--blue);
+          stroke: blue 80%;
         }
-      }
-    }
-  }
-}
-
-.excludeModal {
-  height: 100%;
-  width: 100%;
-  background: var(--white);
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  svg {
-    width: 2.5rem;
-    height: 2.5rem;
-    margin-bottom: 1.5rem;
-
-    path {
-      stroke: var(--red);
-      width: 100%;
-      height: 100%;
-    }
-  }
-
-  b {
-    font: 700 1.5rem "Poppins", sans-serif;
-    color: var(--black);
-    margin-bottom: 0.75rem;
-    text-align: center;
-  }
-
-  p {
-    font: 400 1rem "Roboto", sans-serif;
-    color: var(--gray-dark);
-    margin-bottom: 2.5rem;
-    text-align: center;
-  }
-
-  div {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 0.5rem;
-
-    @media (max-width: 400px) {
-      flex-direction: column;
-    }
-
-    button {
-      padding: 0.875rem 2rem;
-      cursor: pointer;
-      border: 1px solid transparent;
-      border-radius: 0.5rem;
-      transition: filter 0.2s;
-
-      @media (max-width: 400px) {
-        width: 100%;
-      }
-
-      &:hover {
-        filter: brightness(0.9);
-      }
-
-      &:first-child {
-        background: var(--gray-light);
-        color: var(--gray-dark);
-      }
-
-      &:last-child {
-        background: var(--red);
-        color: var(--white);
       }
     }
   }
